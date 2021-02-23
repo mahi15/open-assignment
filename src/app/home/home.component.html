@@ -1,0 +1,216 @@
+<div class="container">
+  <nav class="navbar navbar-expand-lg sticky-top" style="z-index: 13;">
+    <div class="container">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar1">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" href="#">
+        <img class="logo" src="./assets/images/logo.png" alt="">
+      </a>
+      <div class="collapse navbar-collapse" id="navbar1">
+        <ul class="navbar-nav ul1">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Products</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Solution</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Pricing</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav ul2">
+          <li class="nav-item">
+            <button mat-button class="login-btn">Login</button>
+          </li>
+          <li class="nav-item">
+            <button mat-button class="started-btn">Get started</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>
+<div class="container-fluid">
+  <section>
+    <div class="row">
+      <div class="col-md-5">
+        <div >
+          <img class="blob-circle" src="../../assets/images/blob-small.png" alt="">
+        </div>
+        <div>
+          <img class="caption" src="../../assets/images/We make it Super Sim.svg" alt="">
+        </div>
+        <div class="part-underline1 "></div>
+        <div>
+          <img class="collect-img" src="../../assets/images/collect_img-video.png" alt="">
+        </div>
+        <div>
+          <img class="dots" src="../../assets/images/accounting_dots.svg" alt="">
+        </div>
+      </div>
+      <div class="col-md-7">
+        <div>
+          <img class="circle" src="../../assets/images/circle@2x.png" alt="">
+        </div>
+        <div class="row">
+          <div class="col-md-5">
+            <mat-card class="home-card">
+              <div class="text-center mb-5">
+                <span style="font-size: 18px">Eligibility Calculator</span>
+              </div>
+              <div>
+                <mat-card-content>
+                  <div class="mb-1">
+                    <span>Monthly income</span>
+                  </div>
+                  <span class="amount-range"><i class="fas fa-rupee fa-1x"></i>&nbsp; <b>{{value}}</b></span>
+                  <mat-slider
+                    class="example-margin"
+                    color="primary"
+                    [disabled]="disabled"
+                    [invert]="invert"
+                    [max]="300000"
+                    [min]="100000"
+                    [step]="step"
+                    [thumbLabel]="thumbLabel"
+                    [tickInterval]="tickInterval"
+                    [(ngModel)]="value"
+                    [vertical]="vertical"
+                    (input)="onSliderChange($event)"
+                  >
+                  </mat-slider>
+                  <span class="range-amount"><i class="fas fa-rupee-sign"></i>&nbsp;{{min}} <span style="margin-left: 280px; font-size: 10px; color: #777777"><i class="fas fa-rupee-sign"></i> &nbsp;{{max}}</span></span>
+                  <div class="mb-1">
+                    <div>
+                      <span class="mt-3">Monthly Expenses</span>
+                    </div>
+                    <span class="amount-range"><i class="fas fa-rupee fa-1x"></i> &nbsp;<b>{{value1}}</b></span>
+                    <mat-slider
+                      class="example-margin"
+                      color="primary"
+                      [disabled]="disabled"
+                      [invert]="invert"
+                      [max]="300000"
+                      [min]="100000"
+                      [step]="step1"
+                      [thumbLabel]="thumbLabel"
+                      [tickInterval]="tickInterval1"
+                      [(ngModel)]="value1"
+                      [vertical]="vertical"
+                      (input)="onSliderChange1($event)"
+                    >
+                    </mat-slider>
+                  </div>
+                  <div>
+                    <span>Repayment Tenure</span>
+                    <mat-form-field class="select-list" appearance="legacy">
+                      <mat-select [(ngModel)]="selectedValue" placeholder="Select tenure" name="food" style="font-size: 16px">
+                        <mat-option *ngFor="let food of foods" [value]="food.value" style="font-size: 16px">
+                          {{food.viewValue}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <div>
+                    <span style="color: #777777">Do you have any existing loans? <mat-slide-toggle style="margin-left: 140px" color="primary"></mat-slide-toggle></span>
+                  </div>
+                  <div class="mt-3">
+                    <span style="color: #777777">EMI of existing loan [optional]</span>
+                    <div>
+                      <form [formGroup]="amountForm">
+                        <mat-form-field appearance="legacy" class="select-list">
+                          <input matInput placeholder="" formControlName="amount" style="font-size: 16px">
+                          <mat-icon matSuffix><i class="fas fa-rupee"></i></mat-icon>
+                        </mat-form-field>
+                      </form>
+                    </div>
+                  </div>
+                </mat-card-content>
+              </div>
+            </mat-card>
+          </div>
+          <div class="col-md-5">
+              <mat-card class="home-card1">
+              <mat-card-content style="margin-top: 52px">
+                <div class="text-center">
+                  <span style="font-size: 13px; color: #b198cb">Loan Amount</span>
+                  <div class="mt-1">
+                    <span style="font-size: 18px"><i class="fas fa-rupee"></i> 1,00,0000</span>
+                  </div>
+                </div>
+                <div class="text-center mt-4">
+                  <span style="font-size: 13px; color: #b198cb">Your Emi will be</span>
+                  <div class="mt-1">
+                    <span style="font-size: 18px"><i class="fas fa-rupee"></i> 15,000</span>
+                  </div>
+                </div>
+                <div class="text-center mt-3">
+                  <button mat-raised-button class="get-money">Get Money</button>
+                </div>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </div>
+        <div>
+          <img class="dots1" src="../../assets/images/accounting_dots.svg" alt="">
+        </div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <img class="bg-image" src="assets/images/sol_wave_bg.png" alt="">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-5">
+          <div class="row">
+            <div class="col-md-6 flex-column">
+              <div>
+                <mat-card class="service-card mb2" *ngFor="let item of services">
+                  <mat-card-content class="service-card-content " >
+                    <img class="service-img mb-2" src="{{item.image}}" alt="image 1">
+                    <h5>{{item.title}}</h5>
+                    <span class="service-content mb-1">{{item.desc}}</span>
+                  </mat-card-content>
+                </mat-card>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <mat-card class="service-card1 mb2" *ngFor="let item of services1">
+                <mat-card-content class="service-card-content " >
+                  <img class="service-img mb-2" src="{{item.image}}" alt="image 1">
+                  <h4>{{item.title}}</h4>
+                  <span class="service-content mb-1">{{item.desc}}</span>
+                </mat-card-content>
+              </mat-card>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="section-part2">
+                  <div class="mb-4">
+                    <h1
+                      style="background: transparent 0 0 no-repeat padding-box;
+                      opacity: 1;">
+                      Boost your business with Open
+                    </h1>
+                  </div>
+                  <div class="part-underline mb-4"></div>
+                  <div>
+                    <span style="color: #777777">Get your hands on a term loan that’s crafted for your business</span>
+                  </div>
+                  <div class="mt3">
+                    <button mat-raised-button class="account-btn">Get an Open Account</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
